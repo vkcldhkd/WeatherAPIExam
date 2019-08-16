@@ -15,7 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        if let type = UserDefaultHelper.getTemperatureType(){
+            LogHelper.printLog("type is \(type)")
+        }else{
+            UserDefaultHelper.set(value: TemperatureType.celsius.rawValue, key: .temperatureType)
+        }
+        let pageControl = UIPageControl.appearance()
+        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.currentPageIndicatorTintColor = .black
+        pageControl.backgroundColor = .white
+        
         return true
     }
 
